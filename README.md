@@ -89,8 +89,11 @@ The cache is incorporated first by aborting if the client has exceeded the attem
 # Resources:
 
 https://www.baeldung.com/spring-security-registration-captcha
+
 https://medium.com/@samuelhenshaw2020/recaptcha-v2-in-angular-8-with-back-end-verification-with-nodejs-9574f297fdef
+
 https://mkyong.com/java/how-to-get-client-ip-address-in-java/
+
 https://www.yusufaytas.com/caching-guava/
 
 
