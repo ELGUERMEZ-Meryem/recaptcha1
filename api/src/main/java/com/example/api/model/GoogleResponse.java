@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 
+//@JsonInclude(JsonInclude.Include.NON_NULL) is used to ignore null fields in an object.
+//@JsonIgnoreProperties(ignoreUnknown = true) to ignore any unknown field. Which means if there is a new field is added tomorrow on JSON which represent your Model then Jackson will not throw UnrecognizedPropertyException while parsing JSON in Java.
+//@JsonPropertyOrder is used to specify the ordering of the serialized properties.
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder({
@@ -20,6 +23,8 @@ public class GoogleResponse {
     @JsonProperty("challenge_ts")
     private String challengeTs;
 
+    //The hostname refers to the server that redirected the user to the reCAPTCHA.
+    //If you manage many domains and wish them all to share the same key-pair, you can choose to verify the hostname property yourself.
     @JsonProperty("hostname")
     private String hostname;
 
@@ -39,11 +44,11 @@ public class GoogleResponse {
     @JsonIgnore
     public boolean hasClientError() {
         ErrorCode[] errors = getErrorCodes();
-        if(errors == null) {
+        if (errors == null) {
             return false;
         }
-        for(ErrorCode error : errors) {
-            switch(error) {
+        for (ErrorCode error : errors) {
+            switch (error) {
                 case InvalidResponse:
                 case MissingResponse:
                     return true;
@@ -52,15 +57,15 @@ public class GoogleResponse {
         return false;
     }
 
-    static enum ErrorCode {
-        MissingSecret,     InvalidSecret,
-        MissingResponse,   InvalidResponse;
+    enum ErrorCode {
+        MissingSecret, InvalidSecret,
+        MissingResponse, InvalidResponse;
 
-        private static Map<String, ErrorCode> errorsMap = new HashMap<String, ErrorCode>(4);
+        private static final Map<String, ErrorCode> errorsMap = new HashMap<String, ErrorCode>(4);
 
         static {
-            errorsMap.put("missing-input-secret",   MissingSecret);
-            errorsMap.put("invalid-input-secret",   InvalidSecret);
+            errorsMap.put("missing-input-secret", MissingSecret);
+            errorsMap.put("invalid-input-secret", InvalidSecret);
             errorsMap.put("missing-input-response", MissingResponse);
             errorsMap.put("invalid-input-response", InvalidResponse);
         }
@@ -71,5 +76,4 @@ public class GoogleResponse {
         }
     }
 
-    // standard getters and setters
 }

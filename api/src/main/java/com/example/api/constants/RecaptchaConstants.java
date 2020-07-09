@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
  * We get recaptcha keys that we stored in the application.yml.
  */
 @Configuration
-@ConfigurationProperties(prefix = "recaptcha")
+@ConfigurationProperties(prefix = "google.recaptcha")
 @Data
 public class RecaptchaConstants {
     private String key;

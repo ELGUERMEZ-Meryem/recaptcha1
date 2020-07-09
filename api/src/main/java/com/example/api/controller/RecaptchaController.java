@@ -20,6 +20,7 @@ public class RecaptchaController {
     @PostMapping
     public ResponseEntity<?> verifyRecaptcha(@RequestBody String recaptcha) {
         try {
+            // Validate captcha response that we get from http request with our RecaptchaService.
             recaptchaService.processResponse(recaptcha);
             return ResponseEntity.status(HttpStatus.OK).body(true);
         } catch (ReCaptchaInvalidException | InvalidReCaptchaException e) {

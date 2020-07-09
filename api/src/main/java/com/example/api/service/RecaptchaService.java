@@ -29,26 +29,32 @@ public class RecaptchaService implements IRecaptcha {
 
     @Override
     public void processResponse(String response) throws ReCaptchaInvalidException, InvalidReCaptchaException {
+        //The captcha response obtained should be sanitized first. A simple regular expression is used.
         if (!responseSanityCheck(response)) {
             throw new InvalidReCaptchaException("Response contains invalid characters");
         }
 
+        //Then we make a request to the web-service with the secret-key, the captcha response, and the client's IP address.
         URI verifyUri = URI.create(String.format(
                 "https://www.google.com/recaptcha/api/siteverify?secret=%s&response=%s&remoteip=%s",
                 recaptchaConstants.getSecretKey(), response, getClientIP()));
 
+        //Call Recaptcha REST service, The response is of Type GoogleResponse
+        //getForObject(url, classType): retrieve a representation by doing a GET on the URL. The response (if any) is unmarshalled to given class type and returned.
         GoogleResponse googleResponse = restTemplate.getForObject(verifyUri, GoogleResponse.class);
 
         if (!googleResponse.isSuccess()) {
             throw new ReCaptchaInvalidException("reCaptcha was not successfully validated");
         }
+        //A truth value in the success property means the user has been validated. Otherwise the errorCodes property will populate with the reason.
     }
 
     private boolean responseSanityCheck(String response) {
-        return StringUtils.hasLength(response);
+        return StringUtils.hasLength(response) && RESPONSE_PATTERN.matcher(response).matches();
     }
 
     private String getClientIP() {
+        //We can get the client IP address via the HTTP request header X-Forwarded-For (XFF).
         String remoteAddr = "";
         if (request != null) {
             remoteAddr = request.getHeader("X-FORWARDED-FOR");
