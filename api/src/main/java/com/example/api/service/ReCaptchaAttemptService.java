@@ -14,8 +14,12 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class ReCaptchaAttemptService {
     private final RecaptchaConstants recaptchaConstants;
-    private LoadingCache<String, Integer> attemptsCache;
+    private final LoadingCache<String, Integer> attemptsCache;
 
+    //Guava Library cache interface allows standard caching operations like get, put and invalidate.
+    //Get operation returns the value associated by the key.
+    //Put operation stores value associated by the key.
+    //Invalidate operation discards the value associated with the key.
     public ReCaptchaAttemptService(RecaptchaConstants recaptchaConstants) {
         super();
         this.recaptchaConstants = recaptchaConstants;
