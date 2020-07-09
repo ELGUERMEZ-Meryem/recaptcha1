@@ -76,7 +76,7 @@ It is important to understand that by integrating reCAPTCHA, every request made 
 
 We should add dependancy guava:
 
-             <dependency>
+            <dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>26.0-jre</version>
