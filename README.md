@@ -1,4 +1,4 @@
-# recaptcha v2 ("I'm not a robot" Checkbox)
+# recaptcha v2 ("I'm not a robot" Checkbox):
 
 In this project we are going to learn how to integrate reCaptcha to angular (v8) and how to validate at backend with Spring boot.
 
@@ -74,7 +74,9 @@ The endpoint accepts an HTTP request on the URL https://www.google.com/recaptcha
 
 It is important to understand that by integrating reCAPTCHA, every request made will cause the server to create a socket to validate the request.We can implement an elementary cache that restricts a client to a number of failed captcha responses that we fix in our application.yml.
 
-We should add dependancy guava:
+We should add dependancy google guava cache:
+
+Cache is a component that is used to speed up data retrieval in general. Google’s guava library provides cache mechanism. guava cache can be used when fast access needed and when values retrieved multiple times. Guava Library cache interface allows standard caching operations like get, put and invalidate. Get operation returns the value associated by the key, put operation stores value associated by the key and invalidate operation discards the value associated with the key.
 
             <dependency>
 			<groupId>com.google.guava</groupId>
@@ -83,6 +85,14 @@ We should add dependancy guava:
 		</dependency>
 
 The cache is incorporated first by aborting if the client has exceeded the attempt limit. Otherwise when processing an unsuccessful GoogleResponse we record the attempts containing an error with the client's response. Successful validation clears the attempts cache.
+
+# Resources:
+
+https://www.baeldung.com/spring-security-registration-captcha
+https://medium.com/@samuelhenshaw2020/recaptcha-v2-in-angular-8-with-back-end-verification-with-nodejs-9574f297fdef
+https://mkyong.com/java/how-to-get-client-ip-address-in-java/
+https://www.yusufaytas.com/caching-guava/
+
 
 
  
