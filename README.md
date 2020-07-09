@@ -21,7 +21,7 @@ We should go to the google recaptcha site https://www.google.com/recaptcha/intro
 When our app is on developpement phase, We can use those keys:
 
     Site key: 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
-    secret-key: 6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
+    Secret key: 6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
 
 IV. Add recaptcha balise in our html page:
 
@@ -76,7 +76,7 @@ It is important to understand that by integrating reCAPTCHA, every request made 
 
 We should add dependancy guava:
 
-    <dependency>
+               <dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>26.0-jre</version>
