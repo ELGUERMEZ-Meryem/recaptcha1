@@ -13,4 +13,6 @@ import org.springframework.context.annotation.Configuration;
 public class RecaptchaConstants {
     private String key;
     private String secretKey;
+    private int maxAttempt;
+    private int duration;
 }

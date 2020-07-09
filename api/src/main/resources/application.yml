@@ -2,3 +2,5 @@ google:
   recaptcha:
     key: 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
     secret-key: 6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
+    max-attempt: 4
+    duration: 4
