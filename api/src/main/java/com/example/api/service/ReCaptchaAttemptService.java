@@ -29,16 +29,19 @@ public class ReCaptchaAttemptService {
     }
 
     public void reCaptchaSucceeded(String key) {
+        //When successful validation, we clear the attempts cache
         attemptsCache.invalidate(key);
     }
 
     public void reCaptchaFailed(String key) {
+        //When unsuccessful GoogleResponse, we add 1 in our client's attemptsCache
         int attempts = attemptsCache.getUnchecked(key);
         attempts++;
         attemptsCache.put(key, attempts);
     }
 
     public boolean isBlocked(String key) {
+        //check if the client has exceeded the attempt limit
         return attemptsCache.getUnchecked(key) >= recaptchaConstants.getMaxAttempt();
     }
 }
