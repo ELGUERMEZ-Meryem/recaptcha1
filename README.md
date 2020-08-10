@@ -49,10 +49,8 @@ to validate the token angular needs to send the token to the spring boot backend
 
 We store the keys in the application.yml:
 
-google:
-  recaptcha:
-    key: 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
-    secret-key: 6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
+google.recaptcha.key: 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
+google.recaptcha.secret-key: 6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
     
     
 And expose them to Spring using the RecaptchaConstants bean annotated with @ConfigurationProperties.
@@ -97,7 +95,11 @@ The same, to integrate Google's reCAPTCHA 3, we first need to register our site 
 
 So, let's register our site at https://www.google.com/recaptcha/admin/create and, after selecting reCAPTCHA v3, we'll obtain the new secret and site keys.
 
-1. Updating application.properties and CaptchaSettings:
+I. FrontEnd integration:
+
+Inside our registration form, we add a hidden field that will store the response token received from the call to the grecaptcha.execute function:
+
+II. Validating token in our backend:
 
 
 
