@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.recaptchaKey = environment.recaptchaKey;
-    //I am using
+    //I am using for localhost
     // Site key: 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
     // Secret key: 6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
     this.recaptchaForm = this.formBuilder.group({
