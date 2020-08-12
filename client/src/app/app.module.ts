@@ -7,10 +7,12 @@ import {NgxCaptchaModule} from "ngx-captcha";
 import {ReactiveFormsModule} from "@angular/forms";
 import {AppService} from "./app.service";
 import {HttpClientModule} from "@angular/common/http";
+import { RecaptchaV3Component } from './recaptcha-v3/recaptcha-v3.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RecaptchaV3Component
   ],
   imports: [
     BrowserModule,

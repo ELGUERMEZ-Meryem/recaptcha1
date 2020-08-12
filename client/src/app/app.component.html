@@ -1,19 +1,25 @@
-<div *ngIf="error">
-  {{error}}
-</div>
-<form (ngSubmit)="onSubmit()" [formGroup]="recaptchaForm">
-  <ngx-recaptcha2 #captchaElem (expire)="handleExpire()"
-                  (load)="handleLoad()"
-                  (reset)="handleReset()"
-                  (success)="handleSuccess($event)"
-                  [hl]="'fr'"
-                  [siteKey]="recaptchaKey"
-                  [useGlobalDomain]="false"
-                  formControlName="recaptcha">
-  </ngx-recaptcha2>
-  <span *ngIf="isControlHasError('recaptcha','required')" style="color: red">
+<h1>{{ isUsingRecaptchaV3 === false ? 'You are using recaptcha v2' : 'You are using recaptcha v3' }}</h1>
+<button
+  (click)="changeRecaptchaVersion()">{{ isUsingRecaptchaV3 === true ? 'Use recaptcha v2' : 'Use recaptcha v3' }}</button>
+<div *ngIf="!isUsingRecaptchaV3">
+  <div *ngIf="error">
+    {{error}}
+  </div>
+  <form (ngSubmit)="onSubmit()" [formGroup]="recaptchaForm">
+    <ngx-recaptcha2 #captchaElem (expire)="handleExpire()"
+                    (load)="handleLoad()"
+                    (reset)="handleReset()"
+                    (success)="handleSuccess($event)"
+                    [hl]="'fr'"
+                    [siteKey]="recaptchaKey"
+                    [useGlobalDomain]="false"
+                    formControlName="recaptcha">
+    </ngx-recaptcha2>
+    <span *ngIf="isControlHasError('recaptcha','required')" style="color: red">
           <small><strong>You have to check recaptcha</strong></small>
   </span>
-  <br>
-  <button>Verify recaptcha</button>
-</form>
+    <br>
+    <button>Verify recaptcha</button>
+  </form>
+</div>
+<app-recaptcha-v3 *ngIf="isUsingRecaptchaV3"></app-recaptcha-v3>

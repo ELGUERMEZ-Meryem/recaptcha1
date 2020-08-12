@@ -15,12 +15,13 @@ export class AppComponent implements OnInit {
   recaptchaKey: string;
   error: string;
   formSubmitted: boolean = false;
+  isUsingRecaptchaV3: boolean = true;
 
   constructor(private formBuilder: FormBuilder, private appService: AppService) {
   }
 
   ngOnInit() {
-    this.recaptchaKey = environment.recaptchaKey;
+    this.recaptchaKey = environment.recaptchav2Key;
     //I am using for localhost
     // Site key: 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
     // Secret key: 6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
@@ -67,5 +68,9 @@ export class AppComponent implements OnInit {
 
     const result = control.hasError(validationType) && (control.dirty || control.touched || this.formSubmitted);
     return result;
+  }
+
+  changeRecaptchaVersion() {
+    this.isUsingRecaptchaV3 = !this.isUsingRecaptchaV3;
   }
 }

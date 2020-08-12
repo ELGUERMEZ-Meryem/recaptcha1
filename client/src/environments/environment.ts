@@ -5,9 +5,9 @@
 export const environment = {
   production: false,
   apiURL: 'http://localhost:8080/',
-  recaptchaKey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
+  recaptchav2Key: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
+  recaptchav3Key: '6Le88r0ZAAAAAED8Ewl6TdLtAvjOOI4ipkPnU5-P'
 };
-
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
