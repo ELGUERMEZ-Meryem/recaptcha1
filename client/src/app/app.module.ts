@@ -1,13 +1,14 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 import {NgxCaptchaModule} from "ngx-captcha";
 import {ReactiveFormsModule} from "@angular/forms";
 import {AppService} from "./app.service";
 import {HttpClientModule} from "@angular/common/http";
-import { RecaptchaV3Component } from './recaptcha-v3/recaptcha-v3.component';
+import {RecaptchaV3Component} from './recaptcha-v3/recaptcha-v3.component';
+import {RecaptchaV3Service} from "./recaptcha-v3/recaptcha-v3.service";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { RecaptchaV3Component } from './recaptcha-v3/recaptcha-v3.component';
     NgxCaptchaModule,
     HttpClientModule
   ],
-  providers: [AppService],
+  providers: [AppService, RecaptchaV3Service],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

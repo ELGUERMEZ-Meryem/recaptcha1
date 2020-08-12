@@ -1,6 +1,12 @@
 google:
-  recaptcha:
-    key: 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
+  recaptcha2:
+    site-key: 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
     secret-key: 6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
     max-attempt: 4
     duration: 4
+
+  recaptcha3:
+    site-key: 6Le88r0ZAAAAAED8Ewl6TdLtAvjOOI4ipkPnU5-P
+    secret-key: 6Le88r0ZAAAAAFaha_ygpnM0fa-3YrgwE0GJgF1v
+    threshold: 0.5
+
