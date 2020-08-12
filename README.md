@@ -135,7 +135,7 @@ The endpoint accepts an HTTP request on the URL https://www.google.com/recaptcha
 	    "hostname": string,
 	    "error-codes": [ ... ],
 	    "score": number,
-            "action": string
+        "action": string
 	}
 
 The score is based on the user's interactions and is a value between 0 (very likely a bot) and 1.0 (very likely a human).
